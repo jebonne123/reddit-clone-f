@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useThreadStore } from "../stores/threadStore";
+import logo from '../../image/reddit.png'
 
 const threadStore = useThreadStore();
 const title = ref("");
@@ -44,21 +45,22 @@ const submitEdit = () => {
   <div class="min-h-screen bg-[#0E1113] flex flex-col items-center py-10">
     <!-- Header -->
     <div class="bg-[#0E1113] w-full p-4 shadow-md fixed top-0 left-0 z-50 border-b-1 border-gray-700">
-      <div class="flex items-center space-x-2">
+      <div class="flex items-center space-x-2 mt-1">
+        <img class="h-10 w-auto" :src="logo"/>
         <h1 class="text-3xl font-semibold text-white">Reddit Clone</h1>
       </div>
-      <p class="text-white"> By jebonne</p>
+      <p class="text-white mt-5"> By jebonne</p>
       <p class="text-white"> basic CRUD operation following the Reddit concept.</p>
     </div>
 
     <!-- New Thread Form -->
-    <div class="bg-white w-full max-w-4xl mt-25 p-6 rounded-lg shadow-md">
-      <h2 class="text-xl font-bold text-gray-700 mb-4">Create a new post</h2>
+    <div class="bg-white h-80 w-full max-w-4xl mt-35 p-6 rounded-lg shadow-md">
+      <h2 class="text-xl font-bold text-gray-700 mt-4">Create a new post</h2>
       <input 
         v-model="title" 
         type="text" 
         placeholder="Thread Title" 
-        class="w-full p-4 border border-gray-300 rounded-md focus:ring-blue-500"
+        class="w-full p-4 border border-gray-300 rounded-md focus:ring-blue-500 mb-3"
       />
       <textarea 
         v-model="content" 

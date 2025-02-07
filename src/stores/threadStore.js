@@ -10,20 +10,19 @@ export const useThreadStore = defineStore("threadStore", {
     }),
     actions: {
         async fetchThreads() {
-            // Fixing the double '/ThreadAPIRoutes' issue
-            const res = await axios.get(`${baseUrl}`); // Just use base URL
+            const res = await axios.get(`${baseUrl}`);
             this.threads = res.data;
         },
         async addThread(thread) {
-            await axios.post(`${baseUrl}`, thread); // Same here, no need to append 'ThreadAPIRoutes'
+            await axios.post(`${baseUrl}`, thread);
             this.fetchThreads();
         },
         async deleteThread(id) {
-            await axios.delete(`${baseUrl}?id=${id}`); // Delete thread using base URL
+            await axios.delete(`${baseUrl}?id=${id}`); 
             this.threads = this.threads.filter(thread => thread._id !== id);
         },
         async editThread(id, updatedData) {
-            const res = await axios.put(`${baseUrl}?id=${id}`, updatedData); // Update thread using base URL
+            const res = await axios.put(`${baseUrl}?id=${id}`, updatedData);
             this.threads = this.threads.map(thread =>
                 thread._id === id ? res.data : thread
             );
